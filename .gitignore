@@ -4,6 +4,7 @@
 /courseinfo/node_modules
 /unicafe/node_modules
 /anecdotes/node_modules
+/phonebook/node_modules
 /node_modules
 /.pnp
 .pnp.js
