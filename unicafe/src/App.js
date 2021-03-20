@@ -8,40 +8,25 @@ const App = () => {
 
 
 
-const Stats = (props) =>{
-  return (
-    <div>
-      <p>{props.text}: {props.value}</p>
-    </div>
-  ) 
-}
 
-
-const Positive = (props) =>
+const Stats = (props) =>
 {
-  let avg = props.good + props.bad + props.bad
-  let pos = (props.good / avg) * 100
-  return(
-    <p>Positivo: {pos}</p>
-  )
-}
-
-const All = (props) =>
-{
-  let all = props.good + props.bad + props.bad
-  return(
-    <p>All: {all}</p>
-  )
-}
-
-const Avg = (props) =>
-{
-  let all =(props.good + props.neutral + props.bad)
-
-  let avg = ((props.good*1) +  (props.neutral*0.5) + (props.bad*0))/all
-  return(
-    <p>Avg: {avg}</p>
-  )
+  const all = props.good + props.bad + props.bad
+  if(all)
+  {
+    const avg = ((props.good*1) +  (props.neutral*0.5) + (props.bad*0))/all
+    return(
+      <div>
+        <p>Good: {props.good}</p>
+        <p>Neutral: {props.neutral}</p>
+        <p>Bad: {props.bad}</p>
+        <p>All: {all}</p>
+        <p>Avg: {avg}</p>
+      </div>    
+    )
+  }
+  else
+    return <p>No stats to show</p>
 }
 
 const HandleGood =() => 
@@ -70,12 +55,8 @@ const HandleBad =() =>
       <button onClick={HandleNeutral}>NEUTRAL</button>
       <button onClick={HandleBad}>BAD</button>
 
-      <Stats text='Good' value={good} />
-      <Stats text='Neutral' value={neutral} />
-      <Stats text='Bad' value={bad} />
-      <All good={good} neutral={neutral} bad={bad}/>
-      <Avg good={good} neutral={neutral} bad={bad}/>
-      <Positive good={good} neutral={neutral} bad={bad}/>
+      <Stats good={good} neutral={neutral} bad={bad}/>
+    
     </div>
   )
 }
